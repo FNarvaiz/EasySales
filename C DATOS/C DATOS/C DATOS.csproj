@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5D9F734A-3B06-422C-8B58-29157115298E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>C_DATOS</RootNamespace>
+    <AssemblyName>C DATOS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cDatos.cs" />
+    <Compile Include="Cdatos_articulos.cs" />
+    <Compile Include="Cdatos_bancos.cs" />
+    <Compile Include="Cdatos_cajas.cs" />
+    <Compile Include="Cdatos_cajas_diarias.cs" />
+    <Compile Include="Cdatos_clientes.cs" />
+    <Compile Include="Cdatos_compras.cs" />
+    <Compile Include="Cdatos_conceptos.cs" />
+    <Compile Include="Cdatos_configuraciones.cs" />
+    <Compile Include="Cdatos_cuentas_bancarias.cs" />
+    <Compile Include="Cdatos_cuentas_corrientes.cs" />
+    <Compile Include="Cdatos_formas_pagos.cs" />
+    <Compile Include="Cdatos_localidades.cs" />
+    <Compile Include="Cdatos_medidas.cs" />
+    <Compile Include="Cdatos_operaciones.cs" />
+    <Compile Include="Cdatos_permisos.cs" />
+    <Compile Include="Cdatos_personas.cs" />
+    <Compile Include="Cdatos_proveedores.cs" />
+    <Compile Include="Cdatos_registros.cs" />
+    <Compile Include="Cdatos_reportes.cs" />
+    <Compile Include="Cdatos_rubros.cs" />
+    <Compile Include="Cdatos_Tablero_Control.cs" />
+    <Compile Include="Cdatos_usuarios.cs" />
+    <Compile Include="Cdatos_ventas.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CLASES\CLASES\CLASES.csproj">
+      <Project>{2E466269-2EB9-4B23-8C9D-53A28DC2E412}</Project>
+      <Name>CLASES</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
