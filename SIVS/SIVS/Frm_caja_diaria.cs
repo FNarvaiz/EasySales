@@ -309,11 +309,11 @@ namespace SIVS
 
         private void Frm_caja_diaria_Shown(object sender, EventArgs e)
         {
-            if (Ctrl_configuraciones.Devolver().Version < 2)
+           /* if (Ctrl_configuraciones.Devolver().Version < 2)
             {
                 p_cobros.Enabled = false;
                 p_gastos.Enabled = false;
-            }
+            }*/
         }
 
         //protected override void OnPaintBackground(PaintEventArgs e)

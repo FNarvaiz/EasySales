@@ -90,6 +90,7 @@ namespace CONTROL
             {
                 Cdatos_compras.GuardarItem(aux,obj);
                 aux.Articulo.Stock+=aux.Cantidad;
+                aux.Articulo.Costo = aux.Precio_Uni;
                 admArt.Modificar(aux.Articulo);
                 cont++;
                 if(cont==3 || cont==6 || cont==9 )

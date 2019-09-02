@@ -137,6 +137,7 @@ namespace C_DATOS
                 cDatos.ActualizarDatos(cmdtxt);
                 //if(obj.Cantidad>0)
                 cmdtxt = "UPDATE ARTICULOS SET stock= (stock-(" +SacarComa(obj.Cantidad) + ")) where codigo='" + obj.Articulo.Codigo+"'";
+                obj.Articulo.Stock -= obj.Cantidad;
                 //else
                 //cmdtxt = "UPDATE ARTICULOS SET stock= (stock+" + SacarComa(obj.Cantidad*-1) + ") where codigo='" + obj.Articulo.Codigo + "'";
                 cDatos.ActualizarDatos(cmdtxt);

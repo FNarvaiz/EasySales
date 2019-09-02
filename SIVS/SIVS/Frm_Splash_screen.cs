@@ -64,7 +64,7 @@ namespace SIVS
                     Update();
                     System.Threading.Thread.Sleep(tiempoDeEsperaCargaEnMemoria);
                     Ctrl_configuraciones.Actualizar();
-                    Cconfiguracion oconfiguracion = Ctrl_configuraciones.Devolver();
+                    Cconfiguracion oconfiguracion = Ctrl_configuraciones.Devolver(Application.StartupPath + "\\config.json");
                     
                     /*if (Ctrl_configuraciones.TieneVersionBasicProPremium())
                     {

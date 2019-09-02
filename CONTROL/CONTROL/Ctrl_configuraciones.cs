@@ -1,27 +1,70 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using CLASES;
 using C_DATOS;
+using System.IO;
+using Newtonsoft.Json;
+
 namespace CONTROL
 {
     static public  class Ctrl_configuraciones
     {
         static Cconfiguracion objconf;
-        static public Cconfiguracion Devolver()
+        static public Cconfiguracion Devolver(string filePath)
         {
-            if(objconf== null){
-            objconf = Cdatos_configuraciones.Devolver();
-                if (objconf == null)
+            if (objconf == null)
+            {
+                if (File.Exists(filePath)) {
+                    //objconf = Cdatos_configuraciones.Devolver();
+                    using (StreamReader SR = new StreamReader(filePath))
+                        objconf = JsonConvert.DeserializeObject<Cconfiguracion>(SR.ReadToEnd());
+                }
+                else
                 {
-                    objconf = new Cconfiguracion(1, true, false, true, false,false, false, false, 0,true,true,true,3,3,21m,System.Net.Dns.GetHostName(),2,"");
-                    Cdatos_configuraciones.Agregar(objconf);
+                    objconf = new Cconfiguracion(1, true, false, true, false, false, false, false, 0, true, true, true, 3, 3, 21m, System.Net.Dns.GetHostName(), 2, "");
+                    objconf.connectionString = "data source=" + System.Net.Dns.GetHostName() + "\\EASYSOFT;initial catalog=EASYSALES_BD;user id=sa;password=M1987F1990";
+
+                    //Cdatos_configuraciones.Agregar(objconf);
+                    using (FileStream file = File.Create(filePath)) {
+                        using (StreamWriter SW = new StreamWriter(file)) {
+                            SW.Write(JsonConvert.SerializeObject(objconf));
+                        }
+                    }
                 }
             }
-            objconf.Version = 2; // VERSION DEL SISTEMA
+
+            objconf.Version = 3; // VERSION DEL SISTEMA
             return objconf;
         }
+        /*public void Cargar(string archivo)
+        {
+            System.IO.StreamReader lector = new System.IO.StreamReader(archivo);
+
+            for (int x = 0; x < 3; x++)
+            {
+                if (LeerConfiguracion(lector))
+                    x = 3;
+                else if (x == 2)
+                    throw new Exception("El sistema no se a podido conectar a la base de datos en los 3 intentos, por favor comuniquece con su proveedor.");
+            }
+            cAcceso.Cambios();
+            _dao.Cargar();
+            daoRegistros.CargarUltimoID();
+
+            /*          
+                        foreach (cContrato aux in daoContratos.Activa().DevolverLista())
+                            aux.saldoInicial();
+                        cCaja obj;
+                        for (int x = 1; x < 12; x++)
+                        {
+                            obj=daoCajas.Activa().Buscar(x);
+                            if (obj.Cerrada)
+                            {
+
+                                daoCajas.Activa().CargarCerrada(obj);
+                                daoCajas.Activa().GuardarSaldosLimitesDeContratos(obj);
+                            }
+                        }
+        }*/
         static public void Modificar(Cconfiguracion obj)
         {
             Cdatos_configuraciones.Modificar(obj);

@@ -127,7 +127,7 @@ namespace C_DATOS
         {
             try
             {
-                string cmdtxt = "INSERT INTO " + tabla + " (numero,concepto,importe,fecha,id_cuenta_corriente,alta) VALUES (" + obj.Numero + ",'" + concepto + "'," + (obj.Importe.ToString()).Replace(",", ".") + ",'" + obj.Fecha.ToShortDateString() + "'," + cuenta.ID + ",1)";
+                string cmdtxt = "INSERT INTO " + tabla + " (numero,concepto,importe,fecha,id_cuenta_corriente,alta) VALUES (" + obj.Numero + ",'" + concepto + "'," + (obj.Importe.ToString()).Replace(",", ".") + "," + obj.Fecha.ToSqlDate() + "," + cuenta.ID + ",1)";
                 cDatos.ActualizarDatos(cmdtxt);
                 Actualizar = true;
             }
@@ -393,7 +393,7 @@ namespace C_DATOS
         {
             try
             {
-                string cmdtxt = "UPDATE " + tabla + " SET alta='"+alta+"' ,concepto = '" + concepto + "',importe=" + (obj.Importe.ToString()).Replace(",", ".") + ",fecha='" + obj.Fecha.ToShortDateString() + "' WHERE numero=" + obj.Numero;
+                string cmdtxt = "UPDATE " + tabla + " SET alta='"+alta+"' ,concepto = '" + concepto + "',importe=" + (obj.Importe.ToString()).Replace(",", ".") + ",fecha=" + obj.Fecha.ToSqlDate() + " WHERE numero=" + obj.Numero;
                 cDatos.ActualizarDatos(cmdtxt);
                 Actualizar = true;
             }

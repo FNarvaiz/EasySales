@@ -26,7 +26,7 @@ namespace SIVS
             {
                 if (txt_nombre.Text != "")
                 {
-                    int V= adm.ClaveCorrecta(txt_nombre.Text);
+                   /* int V= adm.ClaveCorrecta(txt_nombre.Text);
                     if (V > 0)
                     {
                         adm.Agregar(new Cregistro(DateTime.Today, txt_nombre.Text));
@@ -39,7 +39,7 @@ namespace SIVS
                     {
                         Frm_confirmacion frm = new Frm_confirmacion("La clave ingresada es incorrecta.", "Clave", "Aceptar");
                         frm.ShowDialog();
-                    }
+                    }*/
                 }
             }
             catch(Exception ex)

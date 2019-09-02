@@ -56,7 +56,7 @@ namespace C_DATOS
         {
             try
             {
-                string cmdtxt = "INSERT INTO COMPRAS (id_compra,subtotal, fecha,total,descuento_obtenidos,id_forma_pago) VALUES(" + obj.Id + "," + obj.Subtotal.ToString().Replace(",", ".") + ",'" + obj.Fecha.ToShortDateString() + "'," + obj.Total.ToString().Replace(",", ".") + "," + obj.Descuento.ToString().Replace(",", ".") + "," + obj.FormaPagoDevolver().ID + ")";
+                string cmdtxt = "INSERT INTO COMPRAS (id_compra,subtotal, fecha,total,descuento_obtenidos,id_forma_pago) VALUES(" + obj.Id + "," + obj.Subtotal.ToString().Replace(",", ".") + "," + obj.Fecha.ToSqlDate() + "," + obj.Total.ToString().Replace(",", ".") + "," + obj.Descuento.ToString().Replace(",", ".") + "," + obj.FormaPagoDevolver().ID + ")";
                 cDatos.ActualizarDatos(cmdtxt);
             }
             catch
@@ -142,7 +142,7 @@ namespace C_DATOS
         {
             try
             {
-                string cmdtxt = "UPDATE COMPRAS SET SUBTOTAL= " + obj.Subtotal.ToString().Replace(",", ".") + ", fecha = '" + obj.Fecha.ToShortDateString() + "', id_forma_pago=" + obj.FormaPagoDevolver().ID + ",total=" + obj.Total.ToString().Replace(",", ".") + ",descuento_obtenidos=" + obj.Descuento.ToString().Replace(",", ".") + " WHERE id_compra=" + obj.Id;
+                string cmdtxt = "UPDATE COMPRAS SET SUBTOTAL= " + obj.Subtotal.ToString().Replace(",", ".") + ", fecha = " + obj.Fecha.ToSqlDate() + ", id_forma_pago=" + obj.FormaPagoDevolver().ID + ",total=" + obj.Total.ToString().Replace(",", ".") + ",descuento_obtenidos=" + obj.Descuento.ToString().Replace(",", ".") + " WHERE id_compra=" + obj.Id;
                 cDatos.ActualizarDatos(cmdtxt);
 
             }

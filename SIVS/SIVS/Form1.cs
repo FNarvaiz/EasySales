@@ -597,7 +597,7 @@ namespace SIVS
         {
             if (primeraves)
             {
-                objConf = Ctrl_configuraciones.Devolver();
+                objConf = Ctrl_configuraciones.Devolver(Application.StartupPath + "\\config.json");
                 bs_FormasDePago.ResetBindings(false);
                 admformaspagos.CargarLista();
                 bs_FormasDePago.DataSource = admformaspagos.VerLista();

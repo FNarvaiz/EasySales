@@ -36,7 +36,7 @@ namespace C_DATOS
             }
 
         }
-        static public Cconfiguracion Devolver()
+        static public Cconfiguracion Devolver(string filePath)
         {
             String cmdtext = "SELECT id_configuracion,multiusuario,multicaja,pass,porventa,Facturacion,Epson_Samsung,porcomision,porccomision,ordenprioridad,ordendescform,existenciacompras,nro_puerto,modelo,iva,HostName,version,nombre_logico FROM CONFIGURACIONES where hostname='"+System.Net.Dns.GetHostName()+"'";
             DataTable DT = cDatos.DevolverDatos(cmdtext);

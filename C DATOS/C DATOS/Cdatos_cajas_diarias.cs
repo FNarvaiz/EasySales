@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using CLASES;
+using System.Globalization;
 namespace C_DATOS
 {
     public class  Cdatos_cajas_diarias
@@ -178,7 +179,7 @@ namespace C_DATOS
         {
             try
             {
-                string cmdtxt = "INSERT INTO [CAJAS_DIARIAS] (id_caja_diaria,numero,fecha,efectivo_inicial,cerrada) VALUES("+obj.ID+","+objcaja.Numero+",'" + obj.Fecha.ToShortDateString() + "'," + SacarComa(obj.Efec_inicial)+ ",0)";
+                string cmdtxt = "INSERT INTO [CAJAS_DIARIAS] (id_caja_diaria,numero,fecha,efectivo_inicial,cerrada) VALUES("+obj.ID+","+objcaja.Numero+"," + obj.Fecha.ToSqlDate() + "," + SacarComa(obj.Efec_inicial)+ ",0)";
                 cDatos.ActualizarDatos(cmdtxt);
             }
             catch(Exception ex)

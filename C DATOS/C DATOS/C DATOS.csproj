@@ -78,6 +78,7 @@
     <Compile Include="Cdatos_usuarios.cs" />
     <Compile Include="Cdatos_ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlConversions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CLASES\CLASES\CLASES.csproj">
