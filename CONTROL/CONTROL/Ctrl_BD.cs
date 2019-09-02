@@ -8,7 +8,10 @@ namespace CONTROL
 {
     public class Ctrl_BD
     {
-
+        public Ctrl_BD (string connectionString)
+        {
+            cDatos.StartConnection(connectionString);
+        }
         public bool ExisteBD(){
             try
             {

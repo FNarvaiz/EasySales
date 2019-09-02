@@ -9,22 +9,33 @@ namespace CONTROL
     static public  class Ctrl_configuraciones
     {
         static Cconfiguracion objconf;
+        static string configFile;
         static public Cconfiguracion Devolver(string filePath)
         {
+            configFile = filePath;
             if (objconf == null)
             {
-                if (File.Exists(filePath)) {
+                if (File.Exists(configFile)) {
+                    if (File.Exists("C:\\config.json"))
+                        configFile = "C:\\config.json";
                     //objconf = Cdatos_configuraciones.Devolver();
-                    using (StreamReader SR = new StreamReader(filePath))
+                    using (StreamReader SR = new StreamReader(configFile))
                         objconf = JsonConvert.DeserializeObject<Cconfiguracion>(SR.ReadToEnd());
                 }
                 else
                 {
-                    objconf = new Cconfiguracion(1, true, false, true, false, false, false, false, 0, true, true, true, 3, 3, 21m, System.Net.Dns.GetHostName(), 2, "");
-                    objconf.connectionString = "data source=" + System.Net.Dns.GetHostName() + "\\EASYSOFT;initial catalog=EASYSALES_BD;user id=sa;password=M1987F1990";
+                    string connection = "data source=" + System.Net.Dns.GetHostName() + "\\EASYSOFT;initial catalog=EASYSALES_BD;user id=sa;password=M1987F1990";
 
-                    //Cdatos_configuraciones.Agregar(objconf);
-                    using (FileStream file = File.Create(filePath)) {
+                    try
+                    {
+                        objconf = Cdatos_configuraciones.Devolver(connection);
+                    }
+                    catch { }
+                    if(objconf==null)
+                        objconf = new Cconfiguracion(1, true, false, true, false, false, false, false, 0, true, true, true, 3, 3, 21m, System.Net.Dns.GetHostName(), 2, "");
+
+                    objconf.connectionString = connection;
+                    using (FileStream file = File.Create(configFile)) {
                         using (StreamWriter SW = new StreamWriter(file)) {
                             SW.Write(JsonConvert.SerializeObject(objconf));
                         }
@@ -67,32 +78,15 @@ namespace CONTROL
         }*/
         static public void Modificar(Cconfiguracion obj)
         {
-            Cdatos_configuraciones.Modificar(obj);
+            using (StreamWriter SW = new StreamWriter(configFile))
+            {
+                SW.Write(JsonConvert.SerializeObject(objconf));
+            }
         }
-        static public  bool TieneVersionBasicProPremium()
+      
+        static public void CrearBackup()
         {
-            if (objconf.Version > 0)
-                return true;
-            else
-                return false;
-        }
-        static public  bool TienePerdiodoDePrueba()
-        {
-            if (Cdatos_ventas.CantVentas() < 100)
-                return true;
-            else
-                return false;
-        }
-        static public bool TieneClave()
-        {
-            if (Cdatos_registros.Devolver(objconf).Count != 0)
-                return true;
-            else
-                return false;
-        }
-        static public void CrearBackup(string ubicacion)
-        {
-            cDatos.RealizarBackup(ubicacion);
+            cDatos.RealizarBackup(objconf.backupDirectory);
         }
         static public void Actualizar()
         {
@@ -115,13 +109,7 @@ namespace CONTROL
             }
             
         }
-        static public  bool ClaveAntesDe40Dias()
-        {
-            if (Cdatos_registros.Devolver(objconf)[0].Fecha > DateTime.Today.AddDays(-40))
-                return true;
-            else
-                return false;
-        }
+    
 
 
         static public  bool CantidadDeCajasDiariasCorrecta()

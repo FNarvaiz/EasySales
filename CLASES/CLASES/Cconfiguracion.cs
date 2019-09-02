@@ -26,6 +26,7 @@ namespace CLASES
         decimal _IVA;
         string _nombre_logico;
         public string connectionString { get; set; }
+        public string backupDirectory { get; set; }
         public int Version//Free =0 basic=1 pro=2 premium=3
         {
             set

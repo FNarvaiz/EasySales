@@ -31,7 +31,9 @@ namespace SIVS
         {
             try
             {
-                Ctrl_BD adm = new Ctrl_BD();
+                Cconfiguracion oconfiguracion = Ctrl_configuraciones.Devolver(Application.StartupPath + "\\config.json");
+
+                Ctrl_BD adm = new Ctrl_BD(oconfiguracion.connectionString);
                 lbl_indicador.Text = "Comprobando si existe base de datos.";
                 Update();
                 System.Threading.Thread.Sleep(tiempoDeEsperaCargaEnMemoria);
@@ -64,7 +66,6 @@ namespace SIVS
                     Update();
                     System.Threading.Thread.Sleep(tiempoDeEsperaCargaEnMemoria);
                     Ctrl_configuraciones.Actualizar();
-                    Cconfiguracion oconfiguracion = Ctrl_configuraciones.Devolver(Application.StartupPath + "\\config.json");
                     
                     /*if (Ctrl_configuraciones.TieneVersionBasicProPremium())
                     {

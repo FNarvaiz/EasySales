@@ -9,7 +9,7 @@ namespace C_DATOS
 {
     public class cDatos
     {
-        
+
         ///////////////////////////////////// VARIABLES DE CONEXION ALTERNATIVAS /////////////////////////////////////
 
         //static SqlConnection CN = new SqlConnection("data source=192.168.1.10\\EASYSOFT,1488;initial catalog=SIPP_BD;user id=FIDENZA;password=polakiller");       
@@ -17,7 +17,12 @@ namespace C_DATOS
         //static SqlConnection CN = new SqlConnection("data source=MAURO-PC;integrated security=true;initial catalog=SIVS_BD");
         //static string instancia = "data source=" + System.Net.Dns.GetHostName() + "\\SQLEXPRESS;integrated security=true;initial catalog=SIVS_BD";
         //static SqlConnection CN = new SqlConnection("data source=" + System.Net.Dns.GetHostName() + "\\EASYSOFT;initial catalog=EASYSALES_BD;user id=sa;password=M1987F1990");
-        static SqlConnection CN = new SqlConnection("data source=DESKTOP-Q0SDDJ5\\SQLEXPRESS;initial catalog=Siguenia;integrated security=true");
+        static SqlConnection CN;// = new SqlConnection("data source=DESKTOP-Q0SDDJ5\\SQLEXPRESS;initial catalog=Siguenia;integrated security=true");
+
+        static public void StartConnection(string connectinString)
+        {
+            CN = new SqlConnection(connectinString);
+        }
 
         static public void CrearBD()
         {
@@ -58,8 +63,7 @@ namespace C_DATOS
         }
         static public void RealizarBackup(string direccion)
         {
-            ActualizarDatos("BACKUP DATABASE [EASYSALES_BD] TO DISK = N'" + direccion + "\\Backup" + DateTime.Today.Year + "-" + DateTime.Today.Month + "-" + DateTime.Today.Day + ".bak' WITH NOFORMAT, NOINIT, NAME = N'HOTEL_LUGRA', SKIP, NOREWIND, NOUNLOAD, STATS = 10");
-
+            ActualizarDatos("BACKUP DATABASE ["+ cDatos.CN.Database+"] TO DISK = N'" + direccion + "\\Backup"  + DateTime.Today.Year + "-" + DateTime.Today.MonthTwoDigit() + "-" + DateTime.Today.DayTwoDigit() + ".bak' WITH NOFORMAT, NOINIT, NAME = N'HOTEL_LUGRA', SKIP, NOREWIND, NOUNLOAD, STATS = 10");
         }
         static public bool ExisteTabla(string NombreTabla){
            string scmd ="SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = @nombreTabla";

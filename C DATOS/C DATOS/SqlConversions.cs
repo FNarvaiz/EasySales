@@ -14,33 +14,29 @@ namespace C_DATOS
                 return "1";
             return "0";
         }
-       
+        static public string MonthTwoDigit(this DateTime obj)
+        {
+            if (obj.Month < 10)
+                    return "0"+obj.Month;
+            return obj.Month.ToString();
+        }
+        static public string DayTwoDigit(this DateTime obj)
+        {
+            if (obj.Day < 10)
+                return "0" + obj.Day;
+            return obj.Day.ToString();
+        }
+
         static public string toSql(this decimal obj)
         {
             return (obj.ToString()).Replace(",", ".");
         }
         public static string ToSql(this DateTime value)
         {
-            string month = "";
-            string day = "";
-            if (value.Month < 10)
-                month = "0";
-            month += value.Month;
-            if (value.Day < 10)
-                day = "0";
-            day += value.Day;
-            return "'" + value.Year + month + day + " " + value.ToLongTimeString() + "'";
+            return "'" + value.Year + value.MonthTwoDigit() + value.DayTwoDigit() + " " + value.ToLongTimeString() + "'";
         }
         public static string ToSqlDate(this DateTime value) {
-            string month = "";
-            string day = "";
-            if (value.Month < 10)
-                month = "0";
-            month += value.Month;
-            if (value.Day < 10)
-                day = "0";
-            day += value.Day;
-            return "'" + value.Year + month + day + "'";
+            return "'" + value.MonthTwoDigit() + value.DayTwoDigit() + "'";
         }
     }
 }

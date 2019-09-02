@@ -67,11 +67,11 @@ namespace SIVS
             }
             else
             {
-                if (oConf.ExistenciaPorCompras)
-                {
-                    btn_stock.Visible = false;
-                    txt_stock.Enabled = false;
-                }
+                //if (oConf.ExistenciaPorCompras)
+                //{
+                //    btn_stock.Visible = false;
+                //    txt_stock.Enabled = false;
+                //}
                 txt_IVA.Text = oConf.IVA.ToString();
                 txt_IVA.TextDefault = oConf.IVA.ToString();
                 btn_Cancelar.PerformClick();
@@ -169,8 +169,8 @@ namespace SIVS
             btn_Agregar.PerformClick();
             if (dgrid_articulos.SelectedRows.Count > 0)
             {
-                if (oConf.ExistenciaPorCompras)
-                    txt_costo.Enabled = false;
+                //if (oConf.ExistenciaPorCompras)
+                    //txt_costo.Enabled = false;
                 oArt = (Carticulo)dgrid_articulos.CurrentRow.DataBoundItem;
                 cbb_Rubro.SelectedItem = oArt.Rubro;
                 cb_medidas.SelectedItem = oArt.Unidad_Medida;
@@ -601,10 +601,13 @@ namespace SIVS
 
         private void Frm_ABM_articulos_ResizeEnd(object sender, EventArgs e)
         {
-            if (dgrid_articulos.Width > dgrid_articulos.Columns.GetColumnsWidth(DataGridViewElementStates.Displayed))
-                dgrid_articulos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            else
-                dgrid_articulos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            if (dgrid_articulos.Columns.Count > 0)
+            {
+                if (dgrid_articulos.Width > dgrid_articulos.Columns.GetColumnsWidth(DataGridViewElementStates.Displayed))
+                    dgrid_articulos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                else
+                    dgrid_articulos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            }
         }
 
         private void Frm_ABM_articulos_Shown(object sender, EventArgs e)

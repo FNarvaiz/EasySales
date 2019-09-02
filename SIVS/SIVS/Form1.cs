@@ -876,7 +876,7 @@ namespace SIVS
                             btn_nuevoCobro.Visible = true;
                             btn_nuevoGasto.Visible = true;
                             btn_Imprimir.Visible = true;
-                            btn_devolucion.Visible = true;
+                            //btn_devolucion.Visible = true;
                         }
                         txt_codigo.Focus();
                     }
@@ -1034,10 +1034,7 @@ namespace SIVS
                     //    else { }
                     //        //oImpresora.ImprimirTicketHasar(VentaActual);
                     //}
-                    foreach(Citem item in VentaActual.Items())
-                    {
-                        item.Articulo.Modificar_Stock(item.Cantidad*-1);
-                    }
+                  
                     cb_2formasPago.Checked = false;
                     VentaActual = new Cventa(new Cpago());
                     VentaActual.Pago.FormaPago = (Cforma_pago)cb_FormasPagos.SelectedItem; // PARA LA SIGUIENTE VENTA               
@@ -1585,12 +1582,10 @@ namespace SIVS
         {
             try
             {
-                SaveFileDialog frm1 = new SaveFileDialog();
-                frm1.Filter = "Bak backup|*.bak";
-                frm1.Title = "Guardar backup";
-               
-                if (frm1.ShowDialog() == DialogResult.OK)
-                    Ctrl_configuraciones.CrearBackup(Path.GetDirectoryName(frm1.FileName));
+                if (objConf.backupDirectory == "")
+                    throw new Exception("No esta configurada la carpeta donde se realiza el backup. Comuniquece con soporte para arreglarlo.");
+                Ctrl_configuraciones.CrearBackup();
+                System.Diagnostics.Process.Start(@""+objConf.backupDirectory);
             }
             catch (Exception ex)
             {

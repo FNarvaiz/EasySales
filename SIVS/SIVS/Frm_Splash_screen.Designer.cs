@@ -40,9 +40,10 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(0, 435);
+            this.label5.Location = new System.Drawing.Point(0, 670);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(438, 21);
+            this.label5.Size = new System.Drawing.Size(641, 32);
             this.label5.TabIndex = 99;
             this.label5.Text = "EasySoft Copyright © 2012 Todos los derechos reservados";
             // 
@@ -51,26 +52,28 @@
             this.lbl_indicador.BackColor = System.Drawing.Color.Transparent;
             this.lbl_indicador.Font = new System.Drawing.Font("Segoe UI Semibold", 15F);
             this.lbl_indicador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbl_indicador.Location = new System.Drawing.Point(0, 358);
+            this.lbl_indicador.Location = new System.Drawing.Point(0, 551);
+            this.lbl_indicador.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_indicador.Name = "lbl_indicador";
-            this.lbl_indicador.Size = new System.Drawing.Size(801, 51);
+            this.lbl_indicador.Size = new System.Drawing.Size(1202, 78);
             this.lbl_indicador.TabIndex = 100;
             this.lbl_indicador.Text = ".";
             this.lbl_indicador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Frm_Splash_screen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImage = global::SIVS.Properties.Resources.EASYSALES_publicidad;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(801, 456);
+            this.ClientSize = new System.Drawing.Size(1202, 702);
             this.Controls.Add(this.lbl_indicador);
             this.Controls.Add(this.label5);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Frm_Splash_screen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EasySoft GT";
